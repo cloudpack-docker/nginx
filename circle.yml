@@ -4,4 +4,4 @@ machine:
 dependencies:
     override:
         - docker info
-        - docker build -t cloudpack-docker/nginx .
+        - docker build .
