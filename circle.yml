@@ -6,4 +6,5 @@ dependencies:
         - docker build -t cloudpack/nginx .
 test:
     override:
-        - docker run -d cloudpack/nginx
+        - docker run -d -p 80:80 cloudpack/nginx
+        - curl --retry 10 --retry-delay 5 -v http://localhost/
