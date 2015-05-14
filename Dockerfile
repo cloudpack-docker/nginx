@@ -1,4 +1,5 @@
 FROM centos:centos7
 
 RUN yum -y update
-RUN yum search nginx
+RUN RPM -Uvh http://nginx.org/packages/rhel/7/noarch/RPMS/nginx-release-rhel-7-0.el7.ngx.noarch.rpm
+RUN yum -y install nginx
