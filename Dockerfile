@@ -5,6 +5,6 @@ RUN rpm -Uvh http://nginx.org/packages/rhel/7/noarch/RPMS/nginx-release-rhel-7-0
 RUN yum -y install nginx
 RUN yum -y clean all
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 EXPOSE 80
