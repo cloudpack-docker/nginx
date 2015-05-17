@@ -8,3 +8,4 @@ RUN yum -y clean all
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 EXPOSE 80
 VOLUME /usr/share/nginx/html
+VOLUME /etc/nginx
