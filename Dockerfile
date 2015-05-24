@@ -5,8 +5,15 @@ RUN yum -y update
 RUN yum -y install nginx
 RUN yum -y clean all
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
-EXPOSE 80
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
+RUN cp -rfp /usr/share/nginx/html /usr/share/nginx/html-org
 VOLUME /usr/share/nginx/html
+RUN cp -rfp /etc/nginx /etc/nginx-org
 VOLUME /etc/nginx
-VOLUME /var/log/nginx
+
+EXPOSE 80
+CMD test -z "$(ls -A /etc/nginx)" && cp -rfp /etc/nginx-org/* /etc/nginx ;\
+    test -z "$(ls -A /usr/share/nginx/html)" && cp -rfp /usr/share/nginx/html-org/* /usr/share/nginx/html ;\
+    /usr/sbin/nginx -g "daemon off;"
