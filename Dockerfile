@@ -7,6 +7,8 @@ RUN yum -y clean all
 
 RUN cp -rfp /etc/nginx /etc/nginx-org
 RUN cp -rfp /usr/share/nginx/html /usr/share/nginx/html-org
+RUN rm -rf /etc/nginx/*
+RUN rm -rf /usr/share/nginx/html/*
 
 CMD test -z "$(ls -A /etc/nginx)" && cp -rfp /etc/nginx-org/* /etc/nginx ;\
     test -z "$(ls -A /usr/share/nginx/html)" && cp -rfp /usr/share/nginx/html-org/* /usr/share/nginx/html ;\
