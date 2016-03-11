@@ -1,4 +1,4 @@
-FROM cloudpack/centos
+FROM cloudpack/centos:latest
 
 RUN rpm -Uvh --nosignature http://nginx.org/packages/rhel/7/noarch/RPMS/nginx-release-rhel-7-0.el7.ngx.noarch.rpm
 RUN yum -y update
